@@ -1,0 +1,251 @@
+* {
+    box-sizing: border-box;
+    outline: 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+body {
+    margin: 20px auto;
+    padding: 0 30px;
+    color: #707b91;
+    font-family: "Verdana", sans-serif;
+    max-width: 900px;
+    font-size: 12px;
+}
+
+button{
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.left_head {
+    width: 25%;
+}
+
+.right_head {
+    width: 50%;
+    text-align: center;
+}
+
+.fav_city_list{
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+
+.fav_city{
+    width: 50%;
+    padding: 10px 10px 0;
+    margin-top: 15px;
+}
+
+.fav_cities{
+    font-size: 16px;
+}
+
+
+h2, h3 {
+    font-family: "Times New Roman", serif;
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.city {
+    display: flex;
+}
+
+.city > .city_preview {
+    width: 50%;
+    justify-content: space-around;
+}
+
+.city .city_name {
+    width: 100%;
+    font-size: 40px;
+}
+
+.city_name {
+    margin: 10px 0 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.city > .city_info {
+    width: 50%;
+    padding-left: 10px;
+}
+
+.fav_city .city_name {
+    margin: 0;
+}
+
+.city_info_topic {
+    display: flex;
+    justify-content: space-between;
+    background-color: #a7a7a7;
+    font-size: 12px;
+    margin: 8px 0;
+    padding: 5px;
+    color: white;
+}
+
+.city_info_key {
+    font-weight: bold;
+}
+
+.city_info_value {
+    font-weight: lighter;
+}
+
+.city_preview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weather__icon {
+    width: 30px;
+    height: 30px;
+}
+
+.city .weather__icon {
+    width: 60px;
+    height: 60px;
+}
+
+.city .degrees {
+    font-size: 35px;
+}
+
+.fav_cities_header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0;
+}
+
+.delete_button {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    color: white;
+    background-color: #80808c;
+    border: none;
+}
+
+.submit__button {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    color: white;
+    background-color: #80808c;
+    border: none;
+}
+
+input {
+    padding: 10px;
+    height: 30px;
+    width: 100%;
+    border: none;
+    background: #e0e4e7;
+    text-align: left;
+    margin-right: 10px;
+    flex-grow: 1;
+}
+
+label {
+    width: 100%;
+    margin-right: 10px;
+}
+
+.refresh__button {
+    color: #919498;
+    border: none;
+    width: 150px;
+    height: 30px;
+}
+
+.fav_cities_header h2 {
+    font-weight: lighter;
+}
+
+.only_mobile {
+    border: 0;
+    width: 25px;
+    height: 25px;
+}
+
+form {
+    display: flex;
+}
+
+@media only screen and (min-width: 650px) {
+    .only_mobile {
+        display: none;
+    }
+
+    form {
+        width: 35%;
+    }
+}
+
+@media only screen and (max-width: 651px) {
+    .only_desktop {
+        display: none;
+    }
+
+    .refresh__button {
+        width: 40px;
+        height: 30px;
+    }
+
+    .fav_city_list {
+        display: block;
+    }
+
+    .city {
+        display: block;
+    }
+
+    .fav_cities_header {
+        display: block;
+        text-align: left;
+    }
+
+    .city > .city_preview {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .city > .city_info {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .fav_city {
+        width: 100%;
+    }
+
+    .left_head {
+        width: auto;
+    }
+
+    .fav_cities_header > h2, .fav_cities_header > form {
+        margin: 10px 0;
+    }
+}
