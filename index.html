@@ -17,7 +17,6 @@
         </button>
     </div>
 </header>
-
 <div class="loader">Loading...</div>
 <main class="main">
     <section class="current_city">
@@ -60,117 +59,50 @@
             <h2>Избранное</h2>
             <form>
                 <label>
-                    <input type="text" placeholder="Добавить новый город">
+                    <input id="fav_city_input" type="text" placeholder="Добавить новый город">
                 </label>
                 <button class="submit__button">+</button>
             </form>
         </div>
         <ul class="fav_city_list">
-            <li class="fav_city">
+            <template id="fav_city_list_template">
+                <li class="fav_city">
 
-                <div class="city_preview">
-                    <h3 class="city_name">Belgorod</h3>
-                    <div class="degrees">+15 C</div>
-                    <img class="weather__icon" src="img/storm.svg">
-                    <button class="delete_button">x</button>
-                </div>
-
-                <ul class="city_info">
-                    <li class="city_info_topic">
-                        <span class="city_info_key">Ветер</span>
-                        <span class="city_info_value">North, 6 m/s</span>
-                    </li>
-                    <li class="city_info_topic">
-                        <span class="city_info_key">Облачность</span>
-                        <span class="city_info_value">Ясно</span>
-                    </li>
-                    <li class="city_info_topic">
-                        <span class="city_info_key">Давление</span>
-                        <span class="city_info_value">1013 hpa</span>
-                    </li>
-                    <li class="city_info_topic">
-                        <span class="city_info_key">Влажность</span>
-                        <span class="city_info_value">52%</span>
-                    </li>
-                    <li class="city_info_topic">
-                        <span class="city_info_key">Координаты</span>
-                        <span class="city_info_value">[60.0, 60.0]</span>
-                    </li>
-                </ul>
-            </li>
-
-<!--            cpy-->
-            <li class="fav_city">
-
-                <div class="city_preview">
-                    <h3 class="city_name">Belgorod</h3>
-                    <div class="degrees">+15 C</div>
-                    <img class="weather__icon" src="img/storm.svg" alt="weather_icon">
-                    <button class="delete_button">x</button>
-                </div>
-
-                <ul class="city_info">
-                    <li class="city_info_topic">
-                        <span class="city_info_key">Ветер</span>
-                        <span class="city_info_value">North, 6 m/s</span>
-                    </li>
-                    <li class="city_info_topic">
-                        <span class="city_info_key">Облачность</span>
-                        <span class="city_info_value">Ясно</span>
-                    </li>
-                    <li class="city_info_topic">
-                        <span class="city_info_key">Давление</span>
-                        <span class="city_info_value">1013 hpa</span>
-                    </li>
-                    <li class="city_info_topic">
-                        <span class="city_info_key">Влажность</span>
-                        <span class="city_info_value">52%</span>
-                    </li>
-                    <li class="city_info_topic">
-                        <span class="city_info_key">Координаты</span>
-                        <span class="city_info_value">[60.0, 60.0]</span>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="fav_city">
-
-                <div class="city_preview">
-                    <h3 class="city_name">Belgorod</h3>
-                    <div class="degrees">+15 C</div>
-                    <img class="weather__icon" src="img/storm.svg">
-                    <button class="delete_button">x</button>
-                </div>
-
-                <ul class="city_info">
-                    <li class="city_info_topic">
-                        <span class="city_info_key">Ветер</span>
-                        <span class="city_info_value">North, 6 m/s</span>
-                    </li>
-                    <li class="city_info_topic">
-                        <span class="city_info_key">Облачность</span>
-                        <span class="city_info_value">Ясно</span>
-                    </li>
-                    <li class="city_info_topic">
-                        <span class="city_info_key">Давление</span>
-                        <span class="city_info_value">1013 hpa</span>
-                    </li>
-                    <li class="city_info_topic">
-                        <span class="city_info_key">Влажность</span>
-                        <span class="city_info_value">52%</span>
-                    </li>
-                    <li class="city_info_topic">
-                        <span class="city_info_key">Координаты</span>
-                        <span class="city_info_value">[60.0, 60.0]</span>
-                    </li>
-                </ul>
-            </li>
-
-<!--            end cpy-->
+                    <div class="city_preview">
+                        <h3 class="city_name"></h3>
+                        <div class="degrees"></div>
+                        <img class="weather__icon">
+                        <button class="delete_button">x</button>
+                    </div>
+    
+                    <ul class="city_info">
+                        <li class="city_info_topic">
+                            <span class="city_info_key"></span>
+                            <span class="city_info_value"></span>
+                        </li>
+                        <li class="city_info_topic">
+                            <span class="city_info_key"></span>
+                            <span class="city_info_value"></span>
+                        </li>
+                        <li class="city_info_topic">
+                            <span class="city_info_key"></span>
+                            <span class="city_info_value"> </span>
+                        </li>
+                        <li class="city_info_topic">
+                            <span class="city_info_key"></span>
+                            <span class="city_info_value"></span>
+                        </li>
+                        <li class="city_info_topic">
+                            <span class="city_info_key"></span>
+                            <span class="city_info_value"></span>
+                        </li>
+                    </ul>
+                </li>
+            </template>
         </ul>
     </section>
 </main>
-
+<script src="./js/weather.js"></script>
 
 </body>
 </html>
