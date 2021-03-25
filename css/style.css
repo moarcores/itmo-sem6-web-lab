@@ -27,10 +27,12 @@ ul {
 }
 
 header {
-    display: flex;
+    display: none;
     margin-bottom: 20px;
 }
-
+.main {
+    display: none;
+}
 .left_head {
     width: 25%;
 }
@@ -89,7 +91,7 @@ h2, h3 {
     padding-left: 10px;
 }
 
-.fav_city .city_name {
+.fav_city .city_name_fav {
     margin: 0;
 }
 
@@ -155,6 +157,13 @@ h2, h3 {
     color: white;
     background-color: #80808c;
     border: none;
+}
+
+.loader {
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 input {
