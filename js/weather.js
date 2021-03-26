@@ -16,35 +16,34 @@ const getCityInfo = async (searchParams) => {
         response  = await fetch(apiUrl + new URLSearchParams(searchParams).toString());
         if (response.status === 404){
             throw new Error('Такого города увы не существует');
-          }
-          if (response.status === 401){
+        }
+        if (response.status === 401){
             throw new Error('Токен испортился');
-          }
-          if (response.status === 403){
+        }
+        if (response.status === 403){
             throw new Error('Forbiden');
-          }
-          if (response.status === 500){
+        }
+        if (response.status === 500){
             throw new Error('Внутренняя ошибка сервера');
-          }
-          if (response.status === 503){
+        }
+        if (response.status === 503){
             throw new Error('Сервис недоступен');
-          }
+        }
     } catch(err) { 
         alert(err.message)
         setLoading(false)
     }
     
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-    } else {
-        let data = await response.json();
-        return data;
+    if (response.ok) {
+        return await response.json();
     }
-
+    // else {
+    //     throw new Error(`HTTP error! status: ${response.status}`);
+    // }
 }
 
 const setFavCity = async (data) => {
-    searchParams = {
+    let searchParams = {
         lat: data.coords.latitude,
         lon: data.coords.longitude,
         appid: token
@@ -56,7 +55,7 @@ const setFavCity = async (data) => {
 }
 
 const setDefaultCity = async () => {
-    searchParams = {
+    let searchParams = {
         id: tyumenId,
         appid: token
     }
@@ -67,16 +66,13 @@ const setDefaultCity = async () => {
 }
 
 const fillCity = (cityPlace, cityInfo) => {
-    
     cityPlace.querySelector('.city_name').innerHTML = cityInfo.name;
     cityPlace.querySelector('.degrees').innerHTML = Math.floor(cityInfo.main.temp - 273) + ' C';
     let iconUrl = "http://openweathermap.org/img/w/" + cityInfo.weather[0].icon + ".png";
     cityPlace.querySelector('.weather__icon').setAttribute('src', iconUrl)
     fillCityParams(cityPlace.querySelector('.city_info'), cityInfo)
-
-    
-
 }
+
 const fillCityParams = (searchParams, weatherData) => {
     let paramArray = searchParams.querySelectorAll('.city_info_topic')
 
@@ -94,43 +90,31 @@ const fillCityParams = (searchParams, weatherData) => {
 }
 
 const generateEmptyTemplate = ()=> {
-    let template = document.querySelector('#fav_city_list_template').content
-
-
-    return template
+    return document.querySelector('#fav_city_list_template').content
 }
 
 const addFavorite = async (cityName, isNew) => {
-    searchParams = {
+    let searchParams = {
         q: cityName,
         appid: token
     }
     let favList = document.querySelector('.fav_city_list')
-    console.log(favList)
     let data = await getCityInfo(searchParams)
-    console.log(localStorage.getItem(data.id))
     if (localStorage.getItem(data.id) !== null && isNew){
         alert('Такой город присутвует')
     } else {
         localStorage.setItem(data.id, cityName)
-        let temaplte = generateEmptyTemplate()
-        console.log('te', temaplte)
-
-       
-        
-        let favoriteCity = document.importNode(temaplte, true)
+        let template = generateEmptyTemplate()
+        let favoriteCity = document.importNode(template, true)
         favoriteCity.querySelector('.city_name').setAttribute('custom_id', data.id)
         attachRemoveEvents(favoriteCity.querySelector('.delete_button'))
         fillCity(favoriteCity, data)
         favList.appendChild(favoriteCity)
-    
-        
     }
-
     setLoading(false)
 }
 
-setFavotites = () => {
+setFavorites = () => {
     for (let i = 0; i < localStorage.length; i++) {
         addFavorite(localStorage.getItem(localStorage.key(i)), false)
     }
@@ -139,7 +123,6 @@ setFavotites = () => {
 const attachAddEvents = () => {
     const input = document.querySelector('#fav_city_input')
     let submitBtn = document.querySelector('.submit__button')
-    console.log(submitBtn)
     submitBtn.addEventListener('click', event => {
         event.preventDefault();
         if (input.value === ''){
@@ -152,12 +135,10 @@ const attachAddEvents = () => {
 }
 
 const attachRemoveEvents = (removeBtn) => {
-    console.log('remove', removeBtn)
     removeBtn.addEventListener('click', (event) => {
         event.preventDefault()
         const mainList = removeBtn.parentNode.parentNode.parentNode
         if(removeBtn.parentNode.parentNode !== null){
-          console.log('zdaraova katra', removeBtn.parentNode.querySelector('.city_name'))
           mainList.removeChild(removeBtn.parentNode.parentNode)
           localStorage.removeItem(removeBtn.parentNode.querySelector('.city_name').getAttribute('custom_id'))
         }
@@ -165,8 +146,8 @@ const attachRemoveEvents = (removeBtn) => {
 }
 
 const attachRefreshEvents = () => {
-    let refrestBtn = document.querySelector('.refresh__button')
-    refrestBtn.addEventListener('click', () => {
+    let refreshBtn = document.querySelector('.refresh__button')
+    refreshBtn.addEventListener('click', () => {
         getCurrentLocation()
     })
 }
@@ -186,9 +167,7 @@ const setLoading = (state) => {
     }
 }
 
-
-
 getCurrentLocation();
 attachAddEvents();
 attachRefreshEvents();
-setFavotites();
+setFavorites();
